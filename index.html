@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Music</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(to bottom, #1e3c72, #2a5298);
+            overflow: hidden;
+            color: #fff;
+        }
+
+        /* Snowflake Styling */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: #fff;
+            font-size: 1rem;
+            animation: fall linear infinite;
+        }
+
+        /* Keyframes for Falling Snow */
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+        }
+
+        /* Heading Styling */
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            background: linear-gradient(90deg, #ffafbd, #ffc3a0);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            animation: glow 1.5s infinite alternate;
+        }
+
+        /* Glow Animation */
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.7);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 1);
+            }
+        }
+
+        /* Music Note Floating */
+        .music-note {
+            position: absolute;
+            font-size: 4rem;
+            top: 20px;
+            left: 20px;
+            animation: float 2s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Snowflake Generator */
+        .snow-container {
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Generate Multiple Snowflakes */
+        .snowflake:nth-child(1) {
+            left: 10%;
+            font-size: 1.2rem;
+            animation-duration: 5s;
+            animation-delay: 0s;
+        }
+        .snowflake:nth-child(2) {
+            left: 20%;
+            font-size: 1rem;
+            animation-duration: 6s;
+            animation-delay: 2s;
+        }
+        .snowflake:nth-child(3) {
+            left: 30%;
+            font-size: 1.5rem;
+            animation-duration: 4s;
+            animation-delay: 1s;
+        }
+        .snowflake:nth-child(4) {
+            left: 40%;
+            font-size: 1.1rem;
+            animation-duration: 7s;
+            animation-delay: 3s;
+        }
+        .snowflake:nth-child(5) {
+            left: 50%;
+            font-size: 1.3rem;
+            animation-duration: 5.5s;
+            animation-delay: 1.5s;
+        }
+        .snowflake:nth-child(6) {
+            left: 60%;
+            font-size: 1rem;
+            animation-duration: 6.5s;
+            animation-delay: 2.5s;
+        }
+        .snowflake:nth-child(7) {
+            left: 70%;
+            font-size: 1.4rem;
+            animation-duration: 4.5s;
+            animation-delay: 0.5s;
+        }
+        .snowflake:nth-child(8) {
+            left: 80%;
+            font-size: 1.2rem;
+            animation-duration: 7.5s;
+            animation-delay: 3.5s;
+        }
+        .snowflake:nth-child(9) {
+            left: 90%;
+            font-size: 1rem;
+            animation-duration: 5s;
+            animation-delay: 1s;
+        }
+        .snowflake:nth-child(10) {
+            left: 95%;
+            font-size: 1.3rem;
+            animation-duration: 6s;
+            animation-delay: 2s;
+        }
+
+        /* Play/Pause Button Styling */
+        .play-pause-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3rem;
+            cursor: pointer;
+            color: white;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid white;
+            padding: 10px 15px;
+            border-radius: 50%;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .play-pause-btn:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: scale(1.1);
+        }
+
+        .play-pause-btn:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Music Note -->
+    <span class="music-note" id="musicNote">🎵</span>
+    
+    <!-- Main Heading -->
+    <h1>Enjoy the Christmas Music!</h1>
+
+    <!-- Snowflake Effects -->
+    <div class="snow-container">
+        <!-- Snowflakes -->
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❄</div>
+    </div>
+
+    <!-- Play/Pause Button -->
+    <div class="play-pause-btn" id="playPauseButton">▶</div>
+
+    <!-- Audio Player -->
+    <audio id="audio" autoplay loop>
+        <source src="y2mate.com - uncle dane intro song SLOWED  REVERBED.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const audio = document.getElementById('audio');
+        const playPauseButton = document.getElementById('playPauseButton');
+        const musicNote = document.getElementById('musicNote');
+
+        // Toggle play/pause
+        playPauseButton.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play();
+                playPauseButton.innerHTML = '❚❚'; // Pause icon
+                musicNote.style.animationPlayState = 'running'; // Start floating animation
+            } else {
+                audio.pause();
+                playPauseButton.innerHTML = '▶ '; // Play icon
+                musicNote.style.animationPlayState = 'paused'; // Stop floating animation
+            }
+        });
+    </script>
+</body>
+</html>
